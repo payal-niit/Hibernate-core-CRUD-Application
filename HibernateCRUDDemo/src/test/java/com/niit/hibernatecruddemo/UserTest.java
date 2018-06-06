@@ -14,7 +14,7 @@ import com.niit.hibernatecruddemo.daoimpl.UserDAOImpl;
 import com.niit.hibernatecruddemo.model.User;
 
 public class UserTest {
-	
+
 	UserDAO userDAO;
 
 	@Before
@@ -24,31 +24,52 @@ public class UserTest {
 
 	@After
 	public void tearDown() throws Exception {
-		userDAO=null;
+		userDAO = null;
 	}
+	
 	
 	@Test
 	public void userListTest() {
-		
+
 		List<User> getUserList = userDAO.getUserList();
-		for(User user:getUserList) {
-			System.out.println("Name: "+user.getUsername());
+		for (User user : getUserList) {
+			System.out.println("Name: " + user.getUsername());
 		}
-		assertEquals(getUserList.size() >0, userDAO.getUserList());
+		boolean flag=false;
+		if(getUserList != null) {
+			flag=true;
+			assertTrue("List is not null",true);
+		}
+		else {
+			flag=false;
+			assertFalse("List is null",false);
+		}
 	}
-	@Ignore
+
+	
 	@Test
 	public void addUser() {
 		User user = new User();
 		user.setUsername("John");
 		user.setPassword("12345");
 		user.setPhone_number("1234567890");
-		
+
 		assertEquals(true, userDAO.createUser(user));
 	}
 	
+	@Ignore
+	@Test
 	public void updateUser() {
-		User user = userDAO.getUserById(1);
+		User user = userDAO.getUserById(10);
+		user.setPhone_number("9820704323");
+		assertEquals(true, userDAO.updateUser(user));
+	}
+	
+	@Ignore
+	@Test
+	public void deleteUser() {
+		User user = userDAO.getUserById(10);
+		assertEquals(true, userDAO.deleteUser(user));
 	}
 
 }

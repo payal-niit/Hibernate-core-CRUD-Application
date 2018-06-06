@@ -42,8 +42,15 @@ public class UserDAOImpl implements UserDAO{
 	
 	public User getUserById(int userId) {
 		
-		User user = (User) session.createQuery("from user where userId = " + userId).list().get(0);
+		User user = (User) session.createQuery("from User where userId = " + userId).list().get(0);
 		return user;
+	}
+
+	public boolean deleteUser(User user) {
+		session.getTransaction().begin();
+		session.delete(user);
+		session.getTransaction().commit();
+		return true;
 	}
 	
 	
