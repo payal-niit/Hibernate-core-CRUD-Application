@@ -1,0 +1,1 @@
+# Hibernate-core CRUD Application
