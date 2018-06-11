@@ -1,0 +1,6 @@
+com\niit\springdemo\dao\UserDAO.class
+com\niit\springdemo\model\User.class
+com\niit\springdemo\service\UserServiceImpl.class
+com\niit\springdemo\daoimpl\UserDAOImpl.class
+com\niit\springdemo\service\UserService.class
+com\niit\springdemo\config\AppContext.class
